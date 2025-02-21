@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+/* General Page Styling */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #ffb6c1, #ff69b4);
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    text-align: center;
+    position: relative;
+}
+
+/* Center Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Flip Cards Container */
+.flip-cards-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.instructions {
+    position: relative;
+    left: 2%;
+    font-family: 'Pacifico', cursive; /* Stylish handwritten font */
+    font-size: 22px;
+    color: #a0006d; /* Dark pink/purple for better contrast */
+    text-align: center;
+    text-shadow: 2px 2px 5px rgba(255, 105, 180, 0.5); /* Soft pink glow */
+    margin-top: 20px;
+    line-height: 1.5;
+    animation: fadeInBounce 2s ease-in-out, colorChange 3s infinite alternate;
+}
+
+@keyframes fadeInBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+}
+
+@keyframes colorChange {
+    0% { color: #58043d; } /* Dark Pink */
+    100% { color: #f672cc; } /* Back to Dark Pink */
+}
+
+/* Flip Card */
+.flip-card {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+/* Flip Card Inner */
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+/* Flip the card when clicked */
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Flip Card Front & Back */
+.flip-card-front, .flip-card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Back Face */
+.flip-card-back {
+    background: #d63384;
+    color: white;
+    transform: rotateY(180deg);
+}
+
+/* Image Inside Flip Card Back - Fit Properly */
+.flip-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Envelope Container */
+.envelope-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Envelope Styling */
+.envelope {
+    position: relative;
+    left: 10%;
+    width: 320px;
+    height: 220px;
+    background: #dc3689;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s;
+}
+
+/* Top Flap - Adds Envelope Opening Animation */
+.top-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #e75480;
+    clip-path: polygon(0 0, 100% 0, 50% 50%);
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out;
+    z-index: 2;
+}
+
+/* Open Envelope Animation */
+.envelope.opened .top-flap {
+    transform: rotateX(180deg);
+}
+
+/* Letter (Message inside) */
+.letter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 90%;
+    height: 90%;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease-in-out;
+    z-index: 3;
+}
+
+/* Make the Letter Appear When Envelope Opens */
+.envelope.opened .letter {
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Heart Icon */
+.heart-icon {
+    font-size: 60px;
+    color: rgb(224, 114, 206);
+    margin-bottom: 10px;
+    animation: heartbeat 1s infinite;
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.message-text {
+    font-size: 15px; 
+    color: #d63384; 
+    text-align: center;
+    line-height: 1.5;
+    max-width: 90%;
+    margin-top: 15px;
+    font-family: 'Pacifico', cursive;
+}
+
+.msg {
+    font-size: 15px; 
+    color: #d63384;
+}
+
+@keyframes fadeIn {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.message-text {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Clickable Message Link */
+.message-link {
+    font-size: 16px;
+    color: #d63384;
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 2px solid #d63384;
+    transition: color 0.3s ease-in-out;
+}
+
+.message-link:hover {
+    color: #52051c;
+}
+/* General Chatbot Styles */
+.chat-container {
+    position: fixed;
+    bottom: 10%;
+    right: 5%;
+    width: 350px; /* Slightly wider */
+    background: #ffe4e1; /* Soft Pink Background */
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    display: flex; /* Changed from 'none' to 'flex' */
+    flex-direction: column;
+    border: 2px solid #ff69b4;
+    z-index: 1001;
+}
+
+/* Chat Header - Pink Theme */
+.chat-header {
+    background: #ff69b4; /* Deep Pink */
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* Close Button */
+.close-btn {
+    background: #ff3366; /* Darker Pink */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.close-btn:hover {
+    background: #d92b5d;
+}
+
+/* Chat Body */
+.chat-body {
+    padding: 10px;
+    height: 300px; /* Slightly increased height */
+    overflow-y: auto;
+    flex: 1;
+    background: #fff0f5; /* Lighter pink */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Bot Message (Soft Pink Bubble) */
+.bot-message {
+    padding: 10px 15px;
+    margin: 8px 0;
+    border-radius: 15px;
+    max-width: 75%;
+    font-size: 14px;
+    background: #ffb6c1; /* Soft Pink */
+    color: #6d214f; /* Dark Text */
+    align-self: flex-start;
+    text-align: left;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+/* User Message */
+.user-message {
+    align-self: flex-end;
+    background: #ff4f93; /* Stronger pink */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 75%;
+    margin: 5px 0;
+    text-align: left;
+    font-size: 14px;
+    word-wrap: break-word;
+    display: inline-block;
+}
+
+/* Chat Footer */
+.chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: #ffe4e1; /* Soft pink */
+}
+
+/* Input Field */
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ff69b4;
+    border-radius: 20px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Send Button */
+.send-btn {
+    background: #ff3366; /* Darker Pink */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-btn:hover {
+    background: #d92b5d;
+}

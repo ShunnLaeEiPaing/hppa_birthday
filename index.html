@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Shaped Flip Cards</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="instructions">
+            <p>Click on the mystery cards to see what!</p>
+            <p>Then, click the envelope to see what! </p>
+        </div>
+
+        <div class="flip-cards-container">
+            <!-- Heart-Shaped Flip Cards -->
+            <div class="flip-card" style="top: 14%; left: 50%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p1.jpg" alt="Heart">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 8%; left: 35%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p2.jpg" alt="Gift">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 8%; left: 65%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p3.jpg" alt="Love">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 25%; left: 25%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p4.jpg" alt="Rose">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 25%; left: 72%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p5.jpg" alt="Letter">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 50%; left: 22%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p7.jpg" alt="Stars">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 50%; left: 75%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p8.jpg" alt="Ribbon">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 75%; left: 32%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p9.jpg" alt="Hearts">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 75%; left: 65%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p10.jpg" alt="Sparkle">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flip-card" style="top: 90%; left: 50%;" onclick="flipCard(this)">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <span class="question-mark">❓</span>
+                    </div>
+                    <div class="flip-card-back">
+                        <img src="p11.jpg" alt="Love Letter">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Envelope -->
+        <div class="envelope-container" onclick="openEnvelope()">
+            <div class="envelope">
+                <div class="top-flap"></div>
+                <div class="bottom-flap"></div>
+                <div class="letter">
+                    <div class="heart-icon"><img src="heart.svg" alt="heart"></div>
+                    <p class="message-text">
+                        22.02.2025<br>
+                        Happy Birthday To You <3<br>
+                        My Roomie Hnin Phyu Phyu Aye <br>
+                    </p>
+                    <p class = "msg">
+                        
+                        <a href="#" class="message-link" onclick="showChatbot(event)">Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Chatbot Window (Hidden Initially) -->
+        <div class="chat-container" id="chatContainer">
+            <div class="chat-header">
+                About Roomie
+                <button class="close-btn" onclick="toggleChat()">Close</button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="bot-message">You wanna know Hnin Phyu Phyu Aye?</div>
+                <div class="bot-message">Ask here who is Hnin Phyu Phyu Aye</div>
+            </div>
+            <div class="chat-footer">
+                <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="handleKeyPress(event)">
+                <button class="send-btn" onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
