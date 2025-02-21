@@ -246,6 +246,7 @@ body {
     display: flex; /* Changed from 'none' to 'flex' */
     flex-direction: column;
     border: 2px solid #ff69b4;
+    display: none;
     z-index: 1001;
 }
 
